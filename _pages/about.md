@@ -1,6 +1,6 @@
 ---
 layout: about
-title: About
+title: home
 permalink: /
 subtitle: <a href="#">Affiliations</a> · Innovative AI for Pharmacology · Translational Data Science
 
