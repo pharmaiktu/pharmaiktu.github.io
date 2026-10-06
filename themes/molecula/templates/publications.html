@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% import 'partial/macros.html' as ui with context %}
+{% set active = page.slug %}
+{% block title %}{{ page.title }} · {{ SITENAME }}{% endblock %}
+{% block rel_url %}{{ page.url }}{% endblock %}
+
+{% block content %}
+{{ ui.page_hero(UI.pubs_badge, UI.pubs_title, UI.pubs_sub, 'book-open') }}
+<section class="sec">
+  <div class="wrap">
+    <div class="pub-tools">
+      <div class="seg" role="group" aria-label="Filter">
+        <button type="button" class="on" data-filter="all">{{ UI.filter_all }} <em>{{ PUBLICATIONS|length }}</em></button>
+        <button type="button" data-filter="journal">{{ UI.filter_journal }} <em>{{ PUBLICATIONS|selectattr('type','equalto','journal')|list|length }}</em></button>
+        <button type="button" data-filter="conference">{{ UI.filter_conference }} <em>{{ PUBLICATIONS|selectattr('type','equalto','conference')|list|length }}</em></button>
+      </div>
+      <label class="search"><i data-lucide="search"></i><input type="search" id="pub-q" placeholder="{{ UI.search_ph }}"></label>
+    </div>
+    <div id="pub-list">
+      {% for year, items in PUBLICATIONS|groupby('year')|reverse %}
+      <div class="pub-year" data-year="{{ year }}">
+        <h3 class="year-head"><span>{{ year }}</span></h3>
+        {% for p in items %}{{ ui.pub_item(p) }}{% endfor %}
+      </div>
+      {% endfor %}
+    </div>
+    <p class="empty" id="pub-empty" hidden>{{ UI.no_results }}</p>
+  </div>
+</section>
+{% endblock %}

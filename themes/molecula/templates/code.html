@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% import 'partial/macros.html' as ui with context %}
+{% set active = page.slug %}
+{% block title %}{{ page.title }} · {{ SITENAME }}{% endblock %}
+{% block rel_url %}{{ page.url }}{% endblock %}
+
+{% block content %}
+{{ ui.page_hero(UI.code_badge, UI.code_title, UI.code_sub, 'code-2') }}
+<section class="sec">
+  <div class="wrap">
+    {% set repos = OPENSCI|selectattr('kind', 'equalto', 'repo')|list %}
+    {% set data = OPENSCI|rejectattr('kind', 'equalto', 'repo')|list %}
+    {% if data %}
+    <h3 class="role-head"><span>{{ UI.code_data }}</span><em>{{ data|length }}</em>
+      <a class="chip" href="{{ CONTACT.huggingface }}" target="_blank" rel="noopener">huggingface.co/pharmaiktu</a></h3>
+    <div class="os-grid">{% for o in data %}{{ ui.os_card(o) }}{% endfor %}</div>
+    {% endif %}
+    {% if repos %}
+    <h3 class="role-head"><span>{{ UI.code_repos }}</span><em>{{ repos|length }}</em>
+      <a class="chip" href="{{ CONTACT.github }}" target="_blank" rel="noopener">github.com/pharmaiktu</a></h3>
+    <div class="os-grid">{% for o in repos %}{{ ui.os_card(o) }}{% endfor %}</div>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}

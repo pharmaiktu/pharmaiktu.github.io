@@ -1,0 +1,106 @@
+{# Ortak bileşenler — her şablon: {% import 'partial/macros.html' as ui with context %} #}
+
+{% macro head(badge, title, sub='', icon='hexagon', center=false) -%}
+<div class="sec-head{{ ' center' if center }}">
+  <span class="badge"><i data-lucide="{{ icon }}"></i>{{ badge }}</span>
+  <h2>{{ title }}</h2>
+  {% if sub %}<p>{{ sub }}</p>{% endif %}
+</div>
+{%- endmacro %}
+
+{% macro page_hero(badge, title, sub, icon='hexagon') -%}
+<section class="page-hero">
+  <div class="hex-bg" aria-hidden="true"></div>
+  <div class="wrap">
+    <span class="badge"><i data-lucide="{{ icon }}"></i>{{ badge }}</span>
+    <h1>{{ title }}</h1>
+    <p>{{ sub }}</p>
+  </div>
+</section>
+{%- endmacro %}
+
+{% macro avatar(m, size='') -%}
+<div class="hexav {{ size }}">
+  {% if m.photo %}<img src="{{ MAIN_SITEURL }}/images/team/{{ m.photo }}" alt="{{ m.name }}" loading="lazy" width="180" height="180">
+  {% else %}<span>{{ m.initials }}</span>{% endif %}
+</div>
+{%- endmacro %}
+
+{% macro person(ref) -%}
+{%- if ref in MEMBER_BY_SLUG -%}{{ MEMBER_BY_SLUG[ref].name }}{%- else -%}{{ ref }}{%- endif -%}
+{%- endmacro %}
+
+{% macro pub_item(p, compact=false) -%}
+<article class="pub" data-type="{{ p.type }}" data-year="{{ p.year }}"
+  data-text="{{ (p.title ~ ' ' ~ (p.authors|map(attribute='name')|join(' ')) ~ ' ' ~ p.venue)|lower|e }}">
+  {% if p.preview and not compact %}
+  <div class="pub-thumb"><img src="{{ MAIN_SITEURL }}/images/publication_preview/{{ p.preview }}" alt="" loading="lazy"></div>
+  {% endif %}
+  <div class="pub-body">
+    <div class="pub-tags">
+      <span class="tag {{ p.type }}">{{ UI.filter_journal if p.type == 'journal' else UI.filter_conference }}</span>
+      {% if p.index %}<span class="tag idx">{{ p.index }}</span>{% endif %}
+      {% if p.note %}<span class="tag">{{ UI.abstract_note }}</span>{% endif %}
+      <span class="tag yr">{{ p.year }}</span>
+    </div>
+    <h3>{% if p.doi %}<a href="https://doi.org/{{ p.doi }}" target="_blank" rel="noopener">{{ p.title }}</a>{% else %}{{ p.title }}{% endif %}</h3>
+    <p class="authors">
+      {%- for a in p.authors -%}
+      {%- if a.member %}<a class="me" href="{{ SITEURL }}/team/#{{ a.member }}">{{ a.name }}</a>{% else %}{{ a.name }}{% endif %}{{ ', ' if not loop.last }}
+      {%- endfor -%}
+    </p>
+    <p class="venue"><i>{{ p.venue }}</i>{% if p.volume %}, {{ p.volume }}{% if p.number %}({{ p.number }}){% endif %}{% endif %}{% if p.pages %}, {{ p.pages }}{% endif %}{% if p.address %} · {{ p.address }}{% endif %}</p>
+    {% if not compact %}
+    <div class="pub-actions">
+      {% if p.doi %}<a class="chip" href="https://doi.org/{{ p.doi }}" target="_blank" rel="noopener"><i data-lucide="external-link"></i>DOI</a>{% endif %}
+      <button class="chip bib-btn" type="button" data-copied="{{ UI.copied }}"><i data-lucide="quote"></i>{{ UI.copy_bib }}</button>
+      <pre class="bib" hidden>{{ p.bibtex|e }}</pre>
+    </div>
+    {% endif %}
+  </div>
+</article>
+{%- endmacro %}
+
+{% macro osdate(d) -%}
+{%- if d -%}{{ d[8:10] ~ '.' ~ d[5:7] ~ '.' ~ d[:4] if DEFAULT_LANG == 'tr' else d }}{%- endif -%}
+{%- endmacro %}
+
+{% macro os_card(o) -%}
+{%- set is_repo = o.kind == 'repo' -%}
+<article class="os-card {{ o.kind }}">
+  <div class="os-top">
+    <span class="os-ico"><i data-lucide="{{ 'github' if is_repo else ('database' if o.kind == 'dataset' else 'box') }}"></i></span>
+    <span class="os-src">{{ 'GitHub' if is_repo else 'Hugging Face' }} · {{ UI.os_kind[o.kind] }}</span>
+    {% if o.gated %}<span class="os-gate" title="{{ UI.gated_note }}"><i data-lucide="lock"></i>{{ UI.gated }}</span>{% endif %}
+  </div>
+  <h3><a href="{{ o.url }}" target="_blank" rel="noopener">{{ o.name }}</a></h3>
+  <p class="os-id">{{ o.id }}</p>
+  {% if o.desc %}<p class="os-desc">{{ o.desc[DEFAULT_LANG] or o.desc.en }}</p>{% endif %}
+  <div class="pub-tags">
+    {% if o.language %}<span class="tag">{{ o.language }}</span>{% endif %}
+    {% if o.license and o.license != 'NOASSERTION' %}<span class="tag idx">{{ o.license }}</span>{% endif %}
+    {% if o.size %}<span class="tag">n {{ o.size|replace('<n<', '–')|replace('n<', '<') }}</span>{% endif %}
+    {% for t in o.topics[:4] %}<span class="tag topic">{{ t }}</span>{% endfor %}
+  </div>
+  <div class="os-foot">
+    <span>{{ UI.updated }}: {{ osdate(o.updated) }}</span>
+    {% if is_repo %}<span><i data-lucide="star"></i>{{ o.stars }}</span>{% else %}<span><i data-lucide="download"></i>{{ o.downloads }} {{ UI.downloads }}</span>{% endif %}
+    <a class="chip" href="{{ o.url }}" target="_blank" rel="noopener"><i data-lucide="external-link"></i>{{ UI.view_on }} {{ 'GitHub' if is_repo else 'Hugging Face' }}</a>
+  </div>
+</article>
+{%- endmacro %}
+
+{% macro project_card(p) -%}
+{%- set ongoing = p.end >= CURRENT_YEAR -%}
+<article class="proj {{ 'live' if ongoing }}">
+  <div class="proj-top">
+    <span class="funder f-{{ p.funder|lower|replace(' ', '')|replace('ü','u')|replace('İ','i')|replace('ı','i') }}">{{ p.funder }}</span>
+    <span class="years">{{ p.start }}–{{ p.end }}</span>
+    <span class="status">{{ UI.ongoing if ongoing else UI.completed }}</span>
+  </div>
+  <h3>{{ p.title[DEFAULT_LANG] }}</h3>
+  {% if DEFAULT_LANG == 'en' %}<p class="orig" lang="tr">{{ p.title.tr }}</p>{% endif %}
+  <p class="prog">{{ p.program[DEFAULT_LANG] }}</p>
+  <p class="who"><b>{{ UI.pi }}:</b> {{ person(p.pi) }}{% if p.team %} · <b>{{ UI.team_label }}:</b> {% for t in p.team %}{{ person(t) }}{{ ', ' if not loop.last }}{% endfor %}{% endif %}</p>
+</article>
+{%- endmacro %}

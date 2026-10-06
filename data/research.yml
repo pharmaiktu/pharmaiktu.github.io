@@ -1,0 +1,56 @@
+# Araştırma alanları — AVESİS grup tanımı ve yayınlardan derlendi.
+# key: projects.yml'deki "area" ile eşleşir · pubs: papers.bib anahtarları · icon: lucide.dev ikon adı
+
+- key: edof
+  icon: focus
+  title: {en: "Extended Depth of Focus", tr: "Odaklama Derinliğinin Artırılması"}
+  short: {en: "One sharp image from a focal stack", tr: "Odak yığınından tek bir net görüntü"}
+  text:
+    en: "A light microscope sees only a thin slice in focus. We fuse multi-focus image stacks into a single, fully focused image with pyramid and Swin vision transformers, attention auto-encoders and learned focus measures — and we publish the multi-focus datasets we build."
+    tr: "Işık mikroskobu yalnızca ince bir dilimi net görür. Çok odaklı görüntü yığınlarını piramit ve Swin görüntü dönüştürücüleri, dikkat mekanizmalı oto-kodlayıcılar ve öğrenilmiş odak ölçütleriyle tek ve tamamen net bir görüntüde birleştiriyor, oluşturduğumuz çok odaklı veri setlerini paylaşıyoruz."
+  pubs: [dogan2026pvtedof, danismaz2025two, dogan2024dl, dogan2025smartmm, akturk2026neuro, danicsmaz2023odaklama]
+
+- key: sff
+  icon: mountain
+  title: {en: "Shape from Focus & 3D Microscopy", tr: "Odaktan Şekil ve 3B Mikroskopi"}
+  short: {en: "Recovering 3D structure from focus", tr: "Odaktan 3B yapıyı geri kazanmak"}
+  text:
+    en: "The same focal stack also encodes depth. From handcrafted focus operators to unsupervised and transformer-based deep models, we reconstruct accurate 3D shapes of specimens and blood cells, and develop deep-learning autofocusing for microscopes."
+    tr: "Aynı odak yığını derinlik bilgisini de taşır. El yapımı odak operatörlerinden denetimsiz ve dönüştürücü tabanlı derin modellere uzanan yöntemlerle numunelerin ve kan hücrelerinin 3B şeklini doğru biçimde yeniden oluşturuyor, mikroskoplar için derin öğrenmeye dayalı otomatik odaklama geliştiriyoruz."
+  pubs: [dogan2025swin, dogan2024higher, dogan2026fromhand, dougu2024extracting, dougan20233b, dougan2023deep, dogu2023efficient]
+
+- key: cells
+  icon: microscope
+  title: {en: "Cellular Image Analysis", tr: "Hücresel Görüntü Analizi"}
+  short: {en: "Segmenting and classifying cells", tr: "Hücreleri bölütlemek ve sınıflandırmak"}
+  text:
+    en: "Accurate segmentation and classification of blood cells, fluorescent nuclei and cell-culture lines (HaCaT) with auto-encoder and U-Net families, supported by new expert-annotated microscopy datasets."
+    tr: "Kan hücrelerinin, floresan çekirdeklerin ve hücre kültürü hatlarının (HaCaT) oto-kodlayıcı ve U-Net aileleriyle yüksek doğrulukta bölütlenmesi ve sınıflandırılması; uzman etiketli yeni mikroskopi veri setleriyle."
+  pubs: [emir2026vggunet, dogu2024performance, dougu2024kan, emir2023floresan, sevim2023extensive]
+
+- key: ddi
+  icon: pill
+  title: {en: "Drug Interactions & Repurposing", tr: "İlaç Etkileşimleri ve Yeniden Konumlandırma"}
+  short: {en: "Predicting how drugs interact", tr: "İlaçların nasıl etkileştiğini öngörmek"}
+  text:
+    en: "Predicting drug–drug and drug–target interactions with convolutional and multi-head self-attention models, towards safer combinations and data-driven drug repurposing."
+    tr: "İlaç–ilaç ve ilaç–hedef etkileşimlerini konvolüsyonel ve çok başlı öz-dikkat modelleriyle öngörerek daha güvenli kombinasyonlara ve veriye dayalı ilaç yeniden konumlandırmaya katkı sağlıyoruz."
+  pubs: [cal2025enhanced, dougan2023ilacc]
+
+- key: moa
+  icon: activity
+  title: {en: "Mechanism of Action from Signals", tr: "Sinyallerden Etki Mekanizması"}
+  short: {en: "Reading drug effects in contractility", tr: "Kasılma sinyallerinde ilaç etkisini okumak"}
+  text:
+    en: "Organ-bath experiments record how smooth muscle contracts under a pharmacological agent. We learn from these contractility signals to predict the agent's mechanism of action automatically — bringing deep learning to the pharmacology lab bench."
+    tr: "İzole organ banyosu deneyleri, düz kasın bir farmakolojik ajan altında nasıl kasıldığını kaydeder. Bu kontraktilite sinyallerinden öğrenerek ajanın etki mekanizmasını otomatik olarak tahmin ediyor, derin öğrenmeyi farmakoloji laboratuvarının tezgâhına taşıyoruz."
+  pubs: [dogu2026moa]
+
+- key: clinical
+  icon: stethoscope
+  title: {en: "Clinical Decision Support", tr: "Klinik Karar Destek"}
+  short: {en: "From lab models to patient care", tr: "Laboratuvar modellerinden hasta bakımına"}
+  text:
+    en: "Translating our methods to clinical questions, such as automatic staging of acute kidney injury (AKI) with deep learning."
+    tr: "Yöntemlerimizi klinik sorulara taşıyoruz; örneğin akut böbrek hasarı (AKI) evresinin derin öğrenme ile otomatik tespiti."
+  pubs: []

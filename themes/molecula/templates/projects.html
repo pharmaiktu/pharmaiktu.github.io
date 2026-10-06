@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% import 'partial/macros.html' as ui with context %}
+{% set active = page.slug %}
+{% block title %}{{ page.title }} · {{ SITENAME }}{% endblock %}
+{% block rel_url %}{{ page.url }}{% endblock %}
+
+{% block content %}
+{{ ui.page_hero(UI.projects_badge, UI.projects_title, UI.projects_page_sub, 'rocket') }}
+<section class="sec">
+  <div class="wrap timeline">
+    {% for year, items in PROJECTS|groupby('start')|reverse %}
+    <div class="tl-year reveal"><span>{{ year }}</span></div>
+    <div class="projs tl-items">
+      {% for p in items %}{{ ui.project_card(p) }}{% endfor %}
+    </div>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

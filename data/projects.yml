@@ -1,0 +1,81 @@
+# PharmAI projeleri — kaynak: AVESİS > Projeler (Ekim 2026)
+# Türkçe başlık resmî başlıktır; İngilizce başlık çeviridir.
+# pi: yürütücü (members.yml'deki slug ya da serbest isim) · team: diğer ekip üyeleri
+# area: research.yml'deki alan anahtarı (ilgili projeler o alanın kartında listelenir)
+
+- title:
+    tr: "Akut Böbrek Hasarı (AKI) Evresinin Derin Öğrenme ile Otomatik Tespiti"
+    en: "Automatic Staging of Acute Kidney Injury (AKI) with Deep Learning"
+  funder: TÜSEB
+  program: {tr: "A Grubu Acil AR-GE Projesi", en: "Group A Urgent R&D Project"}
+  start: 2025
+  end: 2026
+  pi: fatma-tuana-dogu
+  team: [hulya-dogan]
+  area: clinical
+
+- title:
+    tr: "Mikroskobik Sistemlerde 2B ve 3B Hücre Segmentasyonu için Optimum Görüntüleme Sağlanması ve Yeni Derin Öğrenme Tabanlı Yaklaşımlarının Tasarlanması"
+    en: "Optimal Imaging and Novel Deep Learning Approaches for 2D and 3D Cell Segmentation in Microscopic Systems"
+  funder: TÜBİTAK
+  program: {tr: "3501 – Ulusal Genç Araştırmacı Kariyer Geliştirme Programı", en: "3501 – National Young Researchers Career Development Program"}
+  start: 2025
+  end: 2026
+  pi: hulya-dogan
+  team: [feride-sena-sezen, ramazan-ozgur-dogan]
+  area: cells
+
+- title:
+    tr: "Düz Kas Kontraktilitesini Etkileyen Ajanların Etki Mekanizmalarının Otomatik Tahmini için Derin Öğrenme Tabanlı Yeni Yaklaşımların Geliştirilmesi"
+    en: "Novel Deep Learning Approaches for Automatic Prediction of the Mechanisms of Action of Agents Affecting Smooth Muscle Contractility"
+  funder: TÜSEB
+  program: {tr: "A Grubu Acil AR-GE Projesi", en: "Group A Urgent R&D Project"}
+  start: 2024
+  end: 2025
+  pi: feride-sena-sezen
+  team: [hulya-dogan, "Z. Kalha", ilyas-ay]
+  area: moa
+
+- title:
+    tr: "Mikroskobik Sistemlerde Kan Hücrelerinin 3B Görüntülenmesi için Veri Seti Oluşturulması ve Makine Öğrenmesi Algoritmalarının Geliştirilmesi"
+    en: "A Dataset and Machine Learning Algorithms for 3D Imaging of Blood Cells in Microscopic Systems"
+  funder: KTÜ BAP
+  program: {tr: "Bilimsel Araştırma Projesi", en: "Scientific Research Project"}
+  start: 2023
+  end: 2024
+  pi: hulya-dogan
+  team: [ilyas-ay, ramazan-ozgur-dogan]
+  area: sff
+
+- title:
+    tr: "Mikroskobik Sistemlerde Optimum Odaklı Görüntü ve 3B Şekil Oluşturmak için Yeni Derin Öğrenme Yaklaşımlarının Geliştirilmesi"
+    en: "Novel Deep Learning Approaches for Optimally Focused Images and 3D Shape Reconstruction in Microscopic Systems"
+  funder: TÜBİTAK
+  program: {tr: "2219 – Yurt Dışı Doktora Sonrası Araştırma Burs Programı", en: "2219 – International Postdoctoral Research Fellowship Program"}
+  start: 2023
+  end: 2024
+  pi: hulya-dogan
+  team: []
+  area: sff
+
+- title:
+    tr: "Işıklı Mikroskobik Sistemlerde Odaklama Derinliğinin Artırılması için Derin Öğrenme Tabanlı Yaklaşımların Geliştirilmesi"
+    en: "Deep Learning Approaches for Extended Depth of Focus in Light Microscopy"
+  funder: TÜBİTAK
+  program: {tr: "2209-A – Üniversite Öğrencileri Araştırma Projeleri", en: "2209-A – Undergraduate Research Projects"}
+  start: 2023
+  end: 2024
+  pi: zeinab-danaei
+  team: [hulya-dogan]
+  area: edof
+
+- title:
+    tr: "Işıklı Mikroskobik Sistemlerde Derin Öğrenmeye Dayalı Otomatik Odaklama"
+    en: "Deep Learning-Based Autofocusing in Light Microscopy"
+  funder: TÜBİTAK
+  program: {tr: "2209-A – Üniversite Öğrencileri Araştırma Projeleri", en: "2209-A – Undergraduate Research Projects"}
+  start: 2023
+  end: 2024
+  pi: fatma-tuana-dogu
+  team: [hulya-dogan]
+  area: sff

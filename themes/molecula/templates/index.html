@@ -1,0 +1,137 @@
+{% extends "base.html" %}
+{% import 'partial/macros.html' as ui with context %}
+{% set active = 'home' %}
+{% block body_class %}home{% endblock %}
+
+{% block content %}
+{% set T = UI %}
+<section class="hero">
+  <div class="hex-bg" aria-hidden="true"></div>
+  <div class="wrap hero-in">
+    <div class="hero-copy reveal">
+      <span class="eyebrow"><span class="dot"></span>{{ T.hero_eyebrow.format(year=FOUNDED) }}</span>
+      <h1>{{ T.hero_title_1 }} <em>{{ T.hero_title_2 }}</em></h1>
+      <p class="hero-full">{{ T.group_full }}</p>
+      <p class="lead">{{ T.hero_lead }}</p>
+      <div class="cta">
+        <a class="btn primary" href="{{ SITEURL }}/research/">{{ T.hero_cta_research }}<i data-lucide="arrow-right"></i></a>
+        <a class="btn ghost" href="{{ SITEURL }}/contact/#join">{{ T.hero_cta_join }}</a>
+      </div>
+    </div>
+    <figure class="hero-art reveal">
+      <canvas id="molnet" aria-label="{{ T.hero_caption }}" role="img" data-labels='{{ T.hero_glyphs|tojson }}'></canvas>
+      <figcaption><i data-lucide="sparkles"></i>{{ T.hero_caption }}</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="stats">
+  <div class="wrap stats-in">
+    <div class="stat founded"><b>{{ FOUNDED }}</b><span>{{ T.stat_founded }}</span><small>{{ T.stat_founded_note }}</small></div>
+    <div class="stat"><b data-count="{{ STATS.publications }}">{{ STATS.publications }}</b><span>{{ T.stat_publications }}</span><small>{{ STATS.journals }} {{ T.stat_journals }}</small></div>
+    <div class="stat"><b data-count="{{ STATS.projects }}">{{ STATS.projects }}</b><span>{{ T.stat_projects }}</span><small>TÜBİTAK · TÜSEB · BAP</small></div>
+    <div class="stat"><b data-count="{{ STATS.members }}">{{ STATS.members }}</b><span>{{ T.stat_members }}</span><small>KTÜ · Trabzon Ü.</small></div>
+    <div class="stat"><b data-count="{{ STATS.scie }}">{{ STATS.scie }}</b><span>{{ T.stat_scie }}</span><small>{{ T.stat_scie_note }}</small></div>
+  </div>
+</section>
+
+<section class="sec mission">
+  <div class="wrap mission-in">
+    <div class="reveal">
+      {{ ui.head(T.mission_badge, T.mission_title, '', 'target') }}
+      <p class="mission-text">{{ T.mission_text }}</p>
+    </div>
+    <div class="pillars">
+      {% for icon, title, text in T.pillars %}
+      <div class="pillar reveal"><i data-lucide="{{ icon }}"></i><div><b>{{ title }}</b><p>{{ text }}</p></div></div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="sec tinted">
+  <div class="wrap">
+    {{ ui.head(T.research_badge, T.research_title, T.research_sub, 'flask-conical', true) }}
+    <div class="areas">
+      {% for r in RESEARCH %}
+      <a class="area reveal" href="{{ SITEURL }}/research/#{{ r.key }}">
+        <span class="area-ico"><i data-lucide="{{ r.icon }}"></i></span>
+        <h3>{{ r.title[DEFAULT_LANG] }}</h3>
+        <p>{{ r.short[DEFAULT_LANG] }}</p>
+        <span class="area-meta">{% if r.pubs %}{{ r.pubs|length }} {{ T.pubs_short }}{% endif %}{% if r.pubs and r.projects %} · {% endif %}{% if r.projects %}{{ r.projects|length }} {{ T.related_projects|lower }}{% endif %}<i data-lucide="arrow-up-right"></i></span>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-row">
+      {{ ui.head(T.projects_badge, T.projects_title, T.projects_sub, 'rocket') }}
+      <a class="more" href="{{ SITEURL }}/projects/">{{ T.nav.projects }}<i data-lucide="arrow-right"></i></a>
+    </div>
+    <div class="projs">
+      {% for p in PROJECTS[:3] %}{{ ui.project_card(p) }}{% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="sec tinted">
+  <div class="wrap">
+    <div class="sec-row">
+      {{ ui.head(T.pubs_badge, T.pubs_selected, '', 'book-open') }}
+      <a class="more" href="{{ SITEURL }}/publications/">{{ T.pubs_all }}<i data-lucide="arrow-right"></i></a>
+    </div>
+    <div class="pub-grid">
+      {% for p in PUBLICATIONS if p.selected %}{% if loop.index <= 4 %}{{ ui.pub_item(p, compact=true) }}{% endif %}{% endfor %}
+    </div>
+  </div>
+</section>
+
+{% set os_featured = OPENSCI|selectattr('featured')|list %}
+{% if os_featured %}
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-row">
+      {{ ui.head(T.code_badge, T.code_title, T.code_home_sub, 'code-2') }}
+      <a class="more" href="{{ SITEURL }}/code/">{{ T.nav.code }}<i data-lucide="arrow-right"></i></a>
+    </div>
+    <div class="os-grid">
+      {% for o in os_featured[:3] %}{{ ui.os_card(o) }}{% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{% if articles %}
+<section class="sec tinted">
+  <div class="wrap">
+    <div class="sec-row">
+      {{ ui.head(T.news_badge, T.news_title, '', 'newspaper') }}
+      <a class="more" href="{{ SITEURL }}/news/">{{ T.news_all }}<i data-lucide="arrow-right"></i></a>
+    </div>
+    <div class="news-grid">
+      {% for a in articles[:3] %}
+      <a class="news-card reveal" href="{{ SITEURL }}/{{ a.url }}">
+        <time datetime="{{ a.date.isoformat() }}">{{ a.locale_date }}</time>
+        <h3>{{ a.title }}</h3>
+        <p>{{ a.summary|striptags }}</p>
+        <span class="more-link">{{ T.read_more }}<i data-lucide="arrow-right"></i></span>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<section class="join">
+  <div class="wrap join-in reveal">
+    <div>
+      <h2>{{ T.join_title }}</h2>
+      <p>{{ T.join_text }}</p>
+    </div>
+    <a class="btn light" href="mailto:{{ CONTACT.email }}?subject=PharmAI"><i data-lucide="mail"></i>{{ T.join_cta }}</a>
+  </div>
+</section>
+{% endblock %}

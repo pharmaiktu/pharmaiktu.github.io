@@ -1,0 +1,6 @@
+pelican>=4.11
+Markdown>=3.5
+pybtex>=0.25
+PyYAML>=6.0
+pelican-i18n-subsites>=1.0
+pelican-sitemap>=1.2

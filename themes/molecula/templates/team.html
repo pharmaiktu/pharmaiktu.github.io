@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% import 'partial/macros.html' as ui with context %}
+{% set active = page.slug %}
+{% block title %}{{ page.title }} · {{ SITENAME }}{% endblock %}
+{% block rel_url %}{{ page.url }}{% endblock %}
+
+{% block content %}
+{{ ui.page_hero(UI.team_badge, UI.team_title, UI.team_sub, 'users') }}
+<section class="sec">
+  <div class="wrap">
+    {% for m in MEMBERS if m.role == 'leader' %}
+    <article class="leader reveal" id="{{ m.slug }}">
+      <div class="leader-hex">
+        <div class="hexav xl{{ ' padded' if m.hex }}">
+          {% if m.hex or m.photo %}<img src="{{ MAIN_SITEURL }}/images/team/{{ m.hex or m.photo }}" alt="{{ m.name }}" width="240" height="214">
+          {% else %}<span>{{ m.initials }}</span>{% endif %}
+        </div>
+      </div>
+      <div>
+        <span class="role">{{ UI.role_single[m.role] }}</span>
+        <h2>{% if m.title and m.title[DEFAULT_LANG] %}<small>{{ m.title[DEFAULT_LANG] }}</small> {% endif %}{{ m.name }}</h2>
+        {% if m.affiliation %}<p class="aff">{{ m.affiliation[DEFAULT_LANG] }}</p>{% endif %}
+        <div class="links">
+          {% if m.email %}<a class="chip" href="mailto:{{ m.email }}"><i data-lucide="mail"></i>{{ m.email }}</a>{% endif %}
+          {% if m.avesis %}<a class="chip" href="{{ m.avesis }}" target="_blank" rel="noopener"><i data-lucide="graduation-cap"></i>AVESİS</a>{% endif %}
+          <span class="chip ghost"><i data-lucide="book-open"></i>{{ m.pub_count }} {{ UI.pubs_short }}</span>
+        </div>
+      </div>
+    </article>
+    {% endfor %}
+
+    {% for key, roles in TEAM_GROUPS %}
+    {% set group = MEMBERS|selectattr('role', 'in', roles)|list %}
+    {% if group %}
+    <h3 class="role-head"><span>{{ UI.groups[key] }}</span><em>{{ group|length }}</em></h3>
+    <div class="people">
+      {% for m in group %}
+      <article class="person reveal" id="{{ m.slug }}">
+        {{ ui.avatar(m) }}
+        <h4>{{ m.name }}</h4>
+        {% if m.title and m.title[DEFAULT_LANG] %}<p class="ttl">{{ m.title[DEFAULT_LANG] }}</p>{% endif %}
+        <p class="aff">{{ m.affiliation[DEFAULT_LANG] if m.affiliation else UI.role_single[m.role] }}</p>
+        <div class="links">
+          {% if m.pub_count %}<span class="chip ghost sm"><i data-lucide="book-open"></i>{{ m.pub_count }}</span>{% endif %}
+          {% if m.web %}<a class="chip sm" href="{{ m.web }}" target="_blank" rel="noopener" aria-label="Web"><i data-lucide="globe"></i></a>{% endif %}
+          {% if m.email %}<a class="chip sm" href="mailto:{{ m.email }}" aria-label="E-mail"><i data-lucide="mail"></i></a>{% endif %}
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+    {% endif %}
+    {% endfor %}
+
+    {% if THESES %}
+    <h3 class="role-head"><span>{{ UI.theses_title }}</span><em>{{ THESES|length }}</em></h3>
+    <div class="theses">
+      {% for t in THESES %}
+      <div class="thesis reveal"><span class="tag">{{ UI[t.degree] }} · {{ t.year }}</span>
+        <b>{{ t.title[DEFAULT_LANG] }}</b>
+        {% if DEFAULT_LANG == 'en' %}<span class="orig" lang="tr">{{ t.title.tr }}</span>{% endif %}
+        <small>{% if t.student %}<span class="who">{{ UI.thesis_student }}:
+          {% if t.student in MEMBER_BY_SLUG %}<a href="#{{ t.student }}">{{ ui.person(t.student) }}</a>{% else %}{{ t.student }}{% endif %}</span> · {% endif %}{{ UI.advisor }}: {{ ui.person(t.advisor) }}</small></div>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}

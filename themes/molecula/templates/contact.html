@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% import 'partial/macros.html' as ui with context %}
+{% set active = page.slug %}
+{% block title %}{{ page.title }} · {{ SITENAME }}{% endblock %}
+{% block rel_url %}{{ page.url }}{% endblock %}
+
+{% block content %}
+{{ ui.page_hero(UI.contact_badge, UI.contact_title, UI.contact_sub, 'mail') }}
+<section class="sec">
+  <div class="wrap contact-grid">
+    <div class="contact-card reveal">
+      <div class="crow"><i data-lucide="map-pin"></i><div><b>{{ UI.address }}</b><p>{{ CONTACT.address[DEFAULT_LANG] }}</p>
+        <a class="chip" href="{{ CONTACT.map }}" target="_blank" rel="noopener"><i data-lucide="map"></i>{{ UI.open_map }}</a></div></div>
+      <div class="crow"><i data-lucide="mail"></i><div><b>{{ UI.email }}</b><p><a href="mailto:{{ CONTACT.email }}">{{ CONTACT.email }}</a></p></div></div>
+      <div class="crow"><i data-lucide="graduation-cap"></i><div><b>AVESİS</b><p><a href="{{ CONTACT.avesis }}" target="_blank" rel="noopener">{{ UI.avesis }}</a></p></div></div>
+      <div class="crow"><i data-lucide="github"></i><div><b>GitHub</b><p><a href="{{ CONTACT.github }}" target="_blank" rel="noopener">github.com/pharmaiktu</a></p></div></div>
+    </div>
+    <div class="join-card reveal" id="join">
+      <img src="{{ MAIN_SITEURL }}/images/brand/pharmai-logo.jpg" alt="PharmAI" width="150" height="178" loading="lazy">
+      <h2>{{ UI.join_title }}</h2>
+      <p>{{ UI.join_text }}</p>
+      <a class="btn primary" href="mailto:{{ CONTACT.email }}?subject=PharmAI"><i data-lucide="send"></i>{{ UI.join_cta }}</a>
+    </div>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,31 @@
+# Kod & Veri sayfası — depolar ve veri setleri OTOMATİK gelir (GitHub + Hugging Face).
+# Bu dosya yalnız ince ayar içindir; boş bırakılsa da sayfa çalışır.
+#
+# exclude: listede görünmesin (GitHub için "org/repo", Hugging Face için "org/veri-seti")
+# items:   kimliğe göre ek bilgi
+#   desc:     {en: ..., tr: ...}  otomatik açıklamanın yerine geçer
+#   area:     research.yml anahtarı → ilgili araştırma alanında bağlantı olarak listelenir
+#   featured: true → ana sayfada ve listenin başında
+
+exclude:
+  - pharmaiktu/pharmaiktu.github.io     # bu sitenin kendi deposu
+  - pharmaiktu/pcl-pasi-assets          # yalnız README görselleri
+
+items:
+  pharmaiktu/contractility-moa:
+    area: moa
+    featured: true
+    desc:
+      en: "Two-stage framework that turns 1D smooth-muscle contractility signals into Gramian Angular Field images and predicts the mechanism of action with a Swin Transformer. Code is released after acceptance."
+      tr: "1B düz kas kontraktilite sinyallerini Gramian Angular Field görüntülerine dönüştürüp etki mekanizmasını Swin Transformer ile tahmin eden iki aşamalı çerçeve. Kod, makale kabulünden sonra paylaşılacak."
+  pharmaiktu/contractility-signals:
+    area: moa
+    featured: true
+    desc:
+      en: "578 isometric contractility time series from isolated murine trachea and bladder smooth muscle under agents with distinct receptor-mediated mechanisms of action."
+      tr: "Farklı reseptör aracılı etki mekanizmalarına sahip ajanlar altında, izole fare trakea ve mesane düz kasından kaydedilmiş 578 izometrik kontraktilite zaman serisi."
+  pharmaiktu/pcl-pasi:
+    featured: true
+    desc:
+      en: "Multi-task, multi-device image dataset for psoriasis severity assessment in mice: erythema, thickness and scaling scores, captured with three cameras over an 11-day experiment."
+      tr: "Farelerde sedef (psoriasis) şiddetinin değerlendirilmesi için çok görevli, çok cihazlı görüntü veri seti: kızarıklık, kalınlık ve pullanma puanları; 11 günlük deneyde üç farklı kamerayla çekildi."

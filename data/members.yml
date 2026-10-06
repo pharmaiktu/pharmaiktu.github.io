@@ -1,0 +1,97 @@
+# PharmAI üyeleri — kaynak: AVESİS > Araştırma Grubu Üyeleri (Ekim 2026)
+# role: leader | academic | research_staff | research_assistant | phd | msc | grad | alumni
+#       (grad = lisansüstü; program belli değilse — belli olunca msc/phd yapın)
+# title: akademik unvan (bilinmiyorsa boş bırakın; sayfada yalnız rol görünür)
+# bib: yayın listesinde bu kişiyi tanımak için "Soyad, Ad-baş-harfi" (yayın sayısı otomatik hesaplanır)
+# photo: content/images/team/ altındaki dosya (yoksa baş harfli altıgen avatar çizilir)
+
+- slug: hulya-dogan
+  name: Hülya Doğan
+  title: {en: "Assoc. Prof. Dr.", tr: "Doç. Dr."}
+  role: leader
+  affiliation: {en: "Karadeniz Technical University", tr: "Karadeniz Teknik Üniversitesi"}
+  bib: "Doğan, H"
+  photo: hulya-dogan.jpg
+  hex: hulya-dogan-hex.jpg   # grup başkanı kartı: fotoğraf kırpılmadan, yanları siyah dolgulu (480x428)
+  email: hulya@ktu.edu.tr
+  avesis: https://avesis.ktu.edu.tr/hulya
+
+- slug: feride-sena-sezen
+  name: Feride Sena Sezen
+  title: {en: "Prof. Dr.", tr: "Prof. Dr."}
+  role: academic
+  affiliation: {en: "Karadeniz Technical University", tr: "Karadeniz Teknik Üniversitesi"}
+  bib: "Sezen, F"
+  photo: feride-sena-sezen.jpg
+
+- slug: ramazan-ozgur-dogan
+  name: Ramazan Özgür Doğan
+  title: {en: "Asst. Prof. Dr.", tr: "Dr. Öğr. Üyesi"}
+  role: academic
+  affiliation: {en: "Trabzon University · Dept. of Artificial Intelligence Engineering", tr: "Trabzon Üniversitesi · Yapay Zekâ Mühendisliği Bölümü"}
+  bib: "Doğan, R"
+  photo: ramazan-ozgur-dogan.jpg
+  web: https://doganr.com
+
+- slug: ali-haydar-dogu
+  name: Ali Haydar Doğu
+  title: {en: "Lecturer", tr: "Öğr. Gör."}
+  role: academic
+  affiliation: {en: "Karadeniz Technical University", tr: "Karadeniz Teknik Üniversitesi"}
+  bib: "Doğu, A"
+  photo: ali-haydar-dogu.jpg
+
+- slug: ilyas-ay
+  name: İlyas Ay
+  title: {en: "Lecturer", tr: "Öğr. Gör."}
+  role: academic
+  affiliation: {en: "Karadeniz Technical University", tr: "Karadeniz Teknik Üniversitesi"}
+  bib: "Ay, İ"
+  photo: ilyas-ay.jpg
+
+- slug: umit-uzun
+  name: Ümit Uzun
+  title: {en: "Dr.", tr: "Dr."}
+  role: research_staff
+  affiliation: {en: "Karadeniz Technical University", tr: "Karadeniz Teknik Üniversitesi"}
+  bib: "Uzun, Ü"
+  photo: umit-uzun.jpg
+
+- slug: zeinab-danaei
+  name: Zeinab Danaei
+  title: {en: "Dr.", tr: "Dr."}
+  role: research_staff
+  bib: "Danaei, Z"
+
+- slug: elif-gun
+  name: Elif Gün
+  title: {en: "Res. Asst. Dr.", tr: "Arş. Gör. Dr."}
+  role: research_assistant
+  affiliation: {en: "Karadeniz Technical University", tr: "Karadeniz Teknik Üniversitesi"}
+  bib: "Gün, E"
+  photo: elif-gun.jpg
+
+- slug: fatma-tuana-dogu
+  name: Fatma Tuana Doğu
+  role: phd
+  bib: "Doğu, F"
+
+- slug: sibel-danismaz
+  name: Sibel Danışmaz
+  role: phd
+  bib: "Danışmaz, S"
+
+- slug: sumeyye-nur-emir
+  name: Sümeyye Nur Emir
+  role: phd
+  bib: "Emir, S"
+
+- slug: melike-dogan
+  name: Melike Doğan
+  role: phd
+  bib: "Doğan, M"
+
+- slug: beyza-akturk
+  name: Beyza Aktürk
+  role: msc
+  bib: "Aktürk, B"

@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% import 'partial/macros.html' as ui with context %}
+{% set active = page.slug %}
+{% block title %}{{ page.title }} · {{ SITENAME }}{% endblock %}
+{% block rel_url %}{{ page.url }}{% endblock %}
+
+{% block content %}
+{{ ui.page_hero(UI.news_badge, UI.news_title, UI.news_page_sub, 'newspaper') }}
+<section class="sec">
+  <div class="wrap news-list">
+    {% for a in articles %}
+    <a class="news-row reveal" href="{{ SITEURL }}/{{ a.url }}">
+      <time datetime="{{ a.date.isoformat() }}"><b>{{ a.date.strftime('%d') }}</b>{{ a.date.strftime('%m.%Y') }}</time>
+      <div>
+        <h3>{{ a.title }}</h3>
+        <p>{{ a.summary|striptags }}</p>
+        {% if a.tags %}<div class="pub-tags">{% for t in a.tags %}<span class="tag">{{ t }}</span>{% endfor %}</div>{% endif %}
+      </div>
+      <i data-lucide="arrow-right"></i>
+    </a>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

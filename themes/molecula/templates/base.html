@@ -1,0 +1,91 @@
+{%- set L = DEFAULT_LANG -%}
+{%- set T = UI -%}
+{%- set HOME = SITEURL ~ '/' -%}
+{%- set OTHER_BASE = (MAIN_SITEURL ~ '/tr/') if L == 'en' else (MAIN_SITEURL ~ '/') -%}
+<!DOCTYPE html>
+<html lang="{{ L }}">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}{{ SITENAME }} · {{ T.group_full }}{% endblock %}</title>
+  <meta name="description" content="{% block description %}{{ SITEDESCRIPTION }}{% endblock %}">
+  <link rel="icon" href="{{ MAIN_SITEURL }}/favicon.ico">
+  <link rel="alternate" hreflang="{{ T.other_lang }}" href="{{ OTHER_BASE }}{% block rel_url %}{% endblock %}">
+  <script>
+    (function () {
+      try {
+        // Varsayılan beyaz tema; ziyaretçi koyu temayı seçtiyse o tercih hatırlanır.
+        var t = localStorage.getItem('pharmai-theme') === 'dark' ? 'dark' : 'light';
+        document.documentElement.setAttribute('data-theme', t);
+      } catch (e) { document.documentElement.setAttribute('data-theme', 'light'); }
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ MAIN_SITEURL }}/theme/css/molecula.css">
+  {% block head %}{% endblock %}
+</head>
+
+<body class="{% block body_class %}{% endblock %}">
+  <a class="skip" href="#main">{{ 'Skip to content' if L == 'en' else 'İçeriğe geç' }}</a>
+
+  <header class="nav" id="top">
+    <div class="wrap nav-in">
+      <a class="brand" href="{{ HOME }}" aria-label="PharmAI">
+        <img src="{{ MAIN_SITEURL }}/images/brand/pharmai-mark.png" alt="" width="40" height="40">
+        <span class="brand-txt"><b>Pharm<span>AI</span></b><small>{{ T.university }}</small></span>
+      </a>
+      <nav class="nav-links" id="nav-links" aria-label="{{ T.menu }}">
+        {% for slug, key in NAV %}
+        <a href="{{ SITEURL }}/{{ slug }}/" class="{{ 'on' if active == slug }}">{{ T.nav[key] }}</a>
+        {% endfor %}
+      </nav>
+      <div class="nav-tools">
+        <a class="lang" href="{{ OTHER_BASE }}{{ self.rel_url() }}" hreflang="{{ T.other_lang }}" title="{{ T.other_lang_title }}">{{ T.other_lang_label }}</a>
+        <button class="icon-btn" id="theme-btn" type="button" aria-label="{{ T.theme_toggle }}" title="{{ T.theme_toggle }}">
+          <i data-lucide="moon" class="i-moon"></i><i data-lucide="sun" class="i-sun"></i>
+        </button>
+        <button class="icon-btn burger" id="menu-btn" type="button" aria-label="{{ T.menu }}" aria-expanded="false" aria-controls="nav-links">
+          <i data-lucide="menu"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="foot">
+    <div class="wrap foot-in">
+      <div class="foot-brand">
+        <img src="{{ MAIN_SITEURL }}/images/brand/pharmai-logo.jpg" alt="PharmAI" width="92" height="109">
+        <div>
+          <b>{{ T.group_short }}</b>
+          <p>{{ T.footer_text }}</p>
+        </div>
+      </div>
+      <div class="foot-links">
+        {% for slug, key in NAV %}<a href="{{ SITEURL }}/{{ slug }}/">{{ T.nav[key] }}</a>{% endfor %}
+      </div>
+      <div class="foot-contact">
+        <a href="mailto:{{ CONTACT.email }}"><i data-lucide="mail"></i>{{ CONTACT.email }}</a>
+        <a href="{{ CONTACT.avesis }}" target="_blank" rel="noopener"><i data-lucide="graduation-cap"></i>{{ T.avesis }}</a>
+        <a href="{{ CONTACT.github }}" target="_blank" rel="noopener"><i data-lucide="github"></i>github.com/pharmaiktu</a>
+        <a href="{{ CONTACT.huggingface }}" target="_blank" rel="noopener"><i data-lucide="database"></i>huggingface.co/pharmaiktu</a>
+      </div>
+    </div>
+    <div class="wrap foot-bottom">
+      <span>© {{ FOUNDED }}–{{ CURRENT_YEAR }} PharmAI · {{ T.university }}</span>
+      <span>{{ T.footer_built }}</span>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.min.js"></script>
+  <script src="{{ MAIN_SITEURL }}/theme/js/molecula.js"></script>
+  {% block scripts %}{% endblock %}
+</body>
+
+</html>

@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% set active = 'news' %}
+{% block title %}{{ article.title }} · {{ SITENAME }}{% endblock %}
+{% block description %}{{ article.summary|striptags }}{% endblock %}
+{% block rel_url %}{{ article.url }}{% endblock %}
+
+{% block content %}
+<article class="post">
+  <header class="page-hero slim">
+    <div class="hex-bg" aria-hidden="true"></div>
+    <div class="wrap narrow">
+      <a class="back" href="{{ SITEURL }}/news/"><i data-lucide="arrow-left"></i>{{ UI.back_news }}</a>
+      <time datetime="{{ article.date.isoformat() }}">{{ article.locale_date }}</time>
+      <h1>{{ article.title }}</h1>
+      {% if article.tags %}<div class="pub-tags">{% for t in article.tags %}<span class="tag">{{ t }}</span>{% endfor %}</div>{% endif %}
+    </div>
+  </header>
+  <div class="wrap narrow prose">
+    {{ article.content }}
+  </div>
+</article>
+{% endblock %}

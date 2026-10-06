@@ -1,0 +1,35 @@
+# Yönetilen tezler — kaynak: AVESİS > Yönetilen Tezler (Ekim 2026), Karadeniz Teknik Üniversitesi
+# Türkçe başlık resmî başlıktır; İngilizce başlık çeviridir.
+# student / advisor: members.yml slug'ı (ya da serbest isim) · degree: msc | phd
+
+- title:
+    tr: "Hematolojik Hastalıkların Teşhisinde Mikroskobik Kan Görüntüleri ve Elektronik Sağlık Kayıtlarına Dayalı Çok Modlu Hibrit Derin Öğrenme Modeli"
+    en: "A Multimodal Hybrid Deep Learning Model Based on Microscopic Blood Images and Electronic Health Records for the Diagnosis of Hematological Diseases"
+  degree: msc
+  year: 2026
+  student: melike-dogan
+  advisor: hulya-dogan
+
+- title:
+    tr: "Akut Böbrek Hasarı (AKI) Evresinin Derin Öğrenme ile Otomatik Tespiti"
+    en: "Automatic Staging of Acute Kidney Injury (AKI) with Deep Learning"
+  degree: msc
+  year: 2026
+  student: fatma-tuana-dogu
+  advisor: hulya-dogan
+
+- title:
+    tr: "Çok Odaklı Mikroskop Görüntülerinde Görüntü Füzyonu Tabanlı Genişletilmiş Odak Derinliği Yaklaşımının Geliştirilmesi ve Segmentasyon Performansına Etkisinin Araştırılması"
+    en: "An Image Fusion-Based Extended Depth of Focus Approach for Multi-Focus Microscope Images and Its Effect on Segmentation Performance"
+  degree: msc
+  year: 2026
+  student: sumeyye-nur-emir
+  advisor: hulya-dogan
+
+- title:
+    tr: "Dikkat Mekanizmalı Oto-Kodlayıcılar ve Uyarlanabilir Görüntü Füzyonuna Dayalı EDOF Yaklaşımı"
+    en: "An EDOF Approach Based on Attention Auto-Encoders and Adaptive Image Fusion"
+  degree: msc
+  year: 2025
+  student: sibel-danismaz
+  advisor: hulya-dogan

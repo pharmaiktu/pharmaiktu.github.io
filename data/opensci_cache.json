@@ -1,0 +1,108 @@
+{
+  "github": [
+    {
+      "id": "pharmaiktu/pharmaiktu.github.io",
+      "name": "pharmaiktu.github.io",
+      "kind": "repo",
+      "url": "https://github.com/pharmaiktu/pharmaiktu.github.io",
+      "homepage": "",
+      "desc": "Innovative Artificial Intelligence Applications in Pharmacology Research",
+      "language": "HTML",
+      "license": "MIT",
+      "stars": 0,
+      "forks": 0,
+      "topics": [],
+      "archived": false,
+      "updated": "2025-11-06",
+      "created": "2025-10-28"
+    },
+    {
+      "id": "pharmaiktu/contractility-moa",
+      "name": "contractility-moa",
+      "kind": "repo",
+      "url": "https://github.com/pharmaiktu/contractility-moa",
+      "homepage": "",
+      "desc": "Official repo for our two-stage framework that transforms 1D contractility signals into GAF images and leverages a Swin Transformer to predict mechanisms of action (MoA). Code released post-acceptance. Dataset (gated): pharmaiktu/contractility-signals.",
+      "language": "",
+      "license": "Apache-2.0",
+      "stars": 0,
+      "forks": 0,
+      "topics": [],
+      "archived": false,
+      "updated": "2025-10-29",
+      "created": "2025-10-29"
+    }
+  ],
+  "hf": [
+    {
+      "id": "pharmaiktu/contractility-signals",
+      "name": "PharmAI KTU Contractility Signals",
+      "kind": "dataset",
+      "url": "https://huggingface.co/datasets/pharmaiktu/contractility-signals",
+      "desc": "The dataset comprises 578 isometric contractility time series recorded from isolated murine trachea and bladder smooth muscle following exposure to pharmacological agents with distinct receptor-mediated mechanisms of action (MoAs).",
+      "license": "CC-BY-4.0",
+      "size": "1K<n<10K",
+      "tasks": [
+        "other"
+      ],
+      "topics": [
+        "pharmacology",
+        "contractility",
+        "smooth-muscle",
+        "trachea",
+        "bladder",
+        "mechanism-of-action"
+      ],
+      "gated": true,
+      "downloads": 6,
+      "likes": 0,
+      "updated": "2025-10-28",
+      "created": "2025-10-28"
+    },
+    {
+      "id": "pharmaiktu/pcl-pasi",
+      "name": "PCL-PASI: Multi-Task Multi-Device Psoriasis Dataset",
+      "kind": "dataset",
+      "url": "https://huggingface.co/datasets/pharmaiktu/pcl-pasi",
+      "desc": "PCL-PASI PCL-PASI (Preclinical PASI) is a multi-task multi-device image dataset for psoriasis severity assessment in mice.",
+      "license": "CC-BY-NC-4.0",
+      "size": "10K<n<100K",
+      "tasks": [
+        "image-classification"
+      ],
+      "topics": [
+        "medical",
+        "dermatology",
+        "psoriasis",
+        "mouse-model",
+        "multi-task",
+        "multi-device"
+      ],
+      "gated": true,
+      "downloads": 9,
+      "likes": 0,
+      "updated": "2026-05-02",
+      "created": "2026-04-24"
+    },
+    {
+      "id": "pharmaiktu/pcl-pasi-assets",
+      "name": "PCL-PASI — README preview assets",
+      "kind": "dataset",
+      "url": "https://huggingface.co/datasets/pharmaiktu/pcl-pasi-assets",
+      "desc": "Public companion repository hosting the preview figures that are embedded in the README of the gated main dataset: pharmaiktu/pcl-pasi.",
+      "license": "CC-BY-NC-4.0",
+      "size": "",
+      "tasks": [],
+      "topics": [
+        "medical",
+        "dermatology",
+        "psoriasis"
+      ],
+      "gated": false,
+      "downloads": 41,
+      "likes": 0,
+      "updated": "2026-05-02",
+      "created": "2026-04-24"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% import 'partial/macros.html' as ui with context %}
+{% set active = page.slug %}
+{% block title %}{{ page.title }} · {{ SITENAME }}{% endblock %}
+{% block rel_url %}{{ page.url }}{% endblock %}
+
+{% block content %}
+{{ ui.page_hero(UI.research_badge, UI.research_title, UI.research_page_sub, 'flask-conical') }}
+<section class="sec">
+  <div class="wrap">
+    <nav class="toc" aria-label="{{ UI.research_badge }}">
+      {% for r in RESEARCH %}<a href="#{{ r.key }}"><i data-lucide="{{ r.icon }}"></i>{{ r.title[DEFAULT_LANG] }}</a>{% endfor %}
+    </nav>
+    {% for r in RESEARCH %}
+    <article class="rarea reveal" id="{{ r.key }}">
+      <div class="rarea-side">
+        <span class="area-ico big"><i data-lucide="{{ r.icon }}"></i></span>
+        <span class="rnum">0{{ loop.index }}</span>
+      </div>
+      <div class="rarea-main">
+        <h2>{{ r.title[DEFAULT_LANG] }}</h2>
+        <p class="rshort">{{ r.short[DEFAULT_LANG] }}</p>
+        <p>{{ r.text[DEFAULT_LANG] }}</p>
+        {% if r.projects %}
+        <h4><i data-lucide="rocket"></i>{{ UI.related_projects }}</h4>
+        <ul class="mini">
+          {% for p in r.projects %}<li><span class="funder f-{{ p.funder|lower|replace(' ', '')|replace('ü','u') }}">{{ p.funder }}</span>{{ p.title[DEFAULT_LANG] }} <small>({{ p.start }}–{{ p.end }})</small></li>{% endfor %}
+        </ul>
+        {% endif %}
+        {% if r.opensci %}
+        <h4><i data-lucide="code-2"></i>{{ UI.related_code }}</h4>
+        <ul class="mini">
+          {% for o in r.opensci %}<li><span class="tag">{{ 'GitHub' if o.kind == 'repo' else 'HF ' ~ o.kind }}</span><a href="{{ o.url }}" target="_blank" rel="noopener">{{ o.name }}</a>{% if o.gated %} <small><i data-lucide="lock"></i> {{ UI.gated }}</small>{% endif %}</li>{% endfor %}
+        </ul>
+        {% endif %}
+        {% if r.pubs %}
+        <h4><i data-lucide="book-open"></i>{{ UI.related_pubs }}</h4>
+        <ul class="mini">
+          {% for k in r.pubs if k in PUB_BY_KEY %}{% set p = PUB_BY_KEY[k] %}
+          <li><span class="tag yr">{{ p.year }}</span>{% if p.doi %}<a href="https://doi.org/{{ p.doi }}" target="_blank" rel="noopener">{{ p.title }}</a>{% else %}{{ p.title }}{% endif %} <small><i>{{ p.venue }}</i></small></li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}
